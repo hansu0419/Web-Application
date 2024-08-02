@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    background-color: #053015;
+}
+
+nav{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #053015;
+    padding: 5px 5%; 
+    border-bottom-style: solid;
+    border-color: #F0FDF2;
+    border-width: 2px;
+    position: sticky; 
+    top: 0; 
+    z-index: 100;
+}
+
+.logo{
+    width: 160px;
+    margin-right: 45px;
+
+}
+
+.menu-left{
+    display: flex;
+    align-items:end;
+}
+.search{
+    
+    width: max-content; 
+    display: flex;
+    align-items: center;
+    padding: 14px; 
+    border-radius: 28px;
+    background-color: #F0FDF2;
+    width: 700px;
+    transition: box-shadow 0.25s; 
+}
+
+#search-results {
+    margin-top: 20px;
+}
+.search:focus-within{
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.75);
+}
+
+.menu-left form{
+    display: flex;
+    align-items: center;
+}
+
+.search-results{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    
+}
+.search-input{
+    font-size: 16px;
+    font-family: 'Poppins';
+    color: #333333; 
+    outline: none;
+    border: none;
+    background-color: transparent;
+    flex: 1; 
+}
+
+
+.search-input::placeholder{
+    color:rgba(0, 0, 0, 0.5);
+}
+
+.search-image{
+    size: 24px;
+    opacity: 0.5;
+    padding-right: 10px; 
+}
+
+.create-post{
+    width: max-content; 
+    display: flex;
+    align-items: center;
+    padding-left: 90px;
+    background-color: transparent; 
+    cursor: pointer;
+}
+
+.create-post form{
+    display: flex;
+    align-items: center;
+}
+
+.Logout form{
+    display: flex;
+    align-items: center;
+}
+
+.plus{
+   color: #F0FDF2;
+}
+
+#create-post-text{
+    color: #F0FDF2; 
+    font-family: 'Poppins';
+    padding-left: 5px; 
+    text-decoration: none;
+    
+}
+
+.profile form{
+    display: flex;
+    align-items: center;
+}
+
+.profile{
+    width: max-content; 
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    color: white;
+}
+
+
+.Page{
+    display:flex; 
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 3%; 
+}
+
+hr{
+    color: #F0FDF2;
+    margin: 5px;
+}
+
+.content {
+    padding: 20px;
+}
+
+/* Search results styles */
+.search-results {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between search results */
+}
+
+.Post {
+    background-color: #fff; /* White background */
+    padding: 15px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.Post:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+    transform: translateY(-5px); /* Slight lift on hover */
+}
+
+.Post h3 {
+    margin-bottom: 10px;
+    font-size: 1.2em; /* Slightly larger title */
+}
+
+.Post p {
+    margin-bottom: 10px;
+    color: #555; /* Slightly darker text for readability */
+}
+
+.Post a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.Post a:hover {
+    text-decoration: underline;
+}
+
+h1{
+    color: #F0FDF2;
+}

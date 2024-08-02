@@ -1,0 +1,443 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --color1: #053015;
+    --color2: #26A557;
+    --color3: #ECFEEF;
+    --color4: #386C5F;
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    /* background: url('images/dlsu.jpg') no-repeat; */
+    background-size: cover;
+    background-position: center;
+
+    background:
+        /* top, transparent black, faked with gradient */ 
+        linear-gradient(
+          rgba(0, 0, 0, 0.7), 
+          rgba(0, 0, 0, 0.7)
+        ),
+        /* bottom, image */
+        url('dlsu.jpg');
+}
+
+nav{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    background:
+        linear-gradient(
+          rgba(0, 0, 0, 0.4), 
+          rgba(0, 0, 0, 0.4)
+        ),
+        transparent;
+    padding: 5px 5%; 
+    border-bottom-style: solid;
+    border-color: black;
+    border-width: 1px;
+    position: sticky; 
+    top: 0; 
+    z-index: 100;
+}
+
+.logo{
+    width: 160px;
+    margin-right: 45px;
+
+}
+
+.menu-left{
+    display: flex;
+    align-items:end;
+}
+.search{
+    
+    width: max-content; 
+    display: flex;
+    align-items: center;
+    padding: 14px; 
+    border-radius: 28px;
+    background-color: #F0FDF2;
+    width: 700px;
+    transition: box-shadow 0.25s; 
+}
+
+.search:focus-within{
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.75);
+}
+
+.search-input{
+    font-size: 16px;
+    font-family: 'Poppins';
+    color: #333333; 
+    outline: none;
+    border: none;
+    background-color: transparent;
+    flex: 1; 
+}
+
+.search-input::placeholder{
+    color:rgba(0, 0, 0, 0.5);
+}
+
+
+.search-image{
+    size: 24px;
+    opacity: 0.5;
+    padding-right: 10px; 
+}
+.menu-left form{
+    display: flex;
+    align-items: center;
+}
+
+.Create-Post{
+    width: max-content; 
+    display: flex;
+    align-items: center;
+    padding-left: 90px;
+    background-color: transparent; 
+    cursor: pointer;
+}
+
+.Profile form{
+    display: flex;
+    align-items: center;
+}
+
+.Create-Post form{
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+
+.Logout form{
+    display: flex;
+    align-items: center;
+}
+
+.plus{
+    color: #F0FDF2;
+   
+   
+}
+
+#create-post-text{
+    color: #F0FDF2; 
+    font-family: 'Poppins';
+    padding-left: 5px; 
+    text-decoration: none;
+
+    
+}
+
+.Profile{
+    width: max-content; 
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    color: white;
+}
+
+
+
+.Post {
+
+    border: 1px solid rgba(56, 108, 95, 0.4);
+    backdrop-filter: blur(80px);
+    background:
+        linear-gradient(
+          rgba(56, 108, 95, 0.4), 
+          rgba(56, 108, 95, 0.4)
+        ),
+        transparent;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    margin-top:5%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom:5%;
+    padding: 10px 30px;
+    border: 2.5px solid black;
+    border-radius: 15px;
+    display: block;
+}
+    
+.Header {
+    display: flex;
+    padding: 10px;
+    
+}
+
+.Header .Profile-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.Profile-info .User-info {
+    flex-grow: 1;
+    margin-top: 3px;
+}
+
+
+span.Username {
+    font-size:20px;
+    font-weight: 700;
+    color: white;
+}
+
+.Tag-button {
+    background-color: red; 
+    color: #FFFFFF; 
+    border: none; 
+    padding: 8px 16px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    text-align: center;
+    line-height: 8px; 
+}
+
+
+.Tag-button:hover,
+.Tag-button:focus {
+    background-color: rgb(184, 3, 3); 
+}
+
+.Content .Title {
+    color: white;
+}
+
+.Content .Description{
+    font-size: 18px;
+    color: white;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.Icons p{
+    font-size: 30px;
+}
+
+.Icons {
+    width: 115px;
+    display: flex;
+}
+
+.vote-container {
+    display: flex;
+    align-items: center;
+    background: #053015;
+    border: 2px solid #053015;
+    border-radius: 25px;
+    padding: 0px 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    user-select: none;
+    margin-right: 5px;
+}
+
+.vote-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.vote-button svg {
+    width: 25px;
+    height: 24px;
+}
+
+.upvote svg {
+    fill: white;
+}
+
+.downvote svg {
+    fill: white;
+}
+
+#vote-count {
+    font-size: 18px;
+    margin: 0 10px;
+    color: white;
+}
+
+.Title {
+    margin-bottom: 10px;
+}
+
+.Description > p {
+    text-align: justify;
+}
+
+.comment-box {
+    padding: 10px;
+    overflow: hidden;
+}
+
+.comment-box textarea{
+    background-color: transparent;
+    width: -webkit-fill-available;
+    height: 152px;
+    margin: 10px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0 0 0.5px white;
+    font-family: "Poppins", sans-serif; 
+}
+
+
+.comment-box textarea:focus{
+    outline-color: white;
+}
+
+.comment-box .comment-submit{
+    float: right;
+    padding: 6px 14px;
+    border: none;
+    background-color: #053015;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.comment-container{
+    margin-bottom: 5%;
+}
+
+
+.comment{
+    font-size: 18px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.comment-button-container {
+    display: flex;
+    align-items: center;
+    background: #053015;
+    border: 2px solid #053015;
+    border-radius: 25px;
+    padding: 0px 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    user-select: none;
+    margin-left: 5px;
+}
+
+.comment-button {
+    display: flex;
+    background: none; 
+    border: none; 
+    padding: 0; 
+}
+
+.comment-button img {
+    margin-left: 5px;
+    width: 25px; 
+    height: 25px; 
+    display: block; 
+}
+
+.comment-button p {
+    font-size: 10px;
+    color: white;
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.dropbtn img {
+    vertical-align: middle;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #F0FDF2;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0; /* Position it below the image */
+    top: 50%; /* Adjust as needed */
+    border-radius: 5px;
+}
+
+.dropdown:focus-within .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: #386C5F;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+}
+
+/* Additional CSS for replies */
+
+.replies {
+    margin-left: 40px;
+    border-left: 2px solid rgba(56, 108, 95, 0.4);
+    padding-left: 20px;
+}
+
+.reply-container {
+    margin-bottom: 5%;
+}
+
+.reply-container .Header {
+    display: flex;
+    padding: 10px;
+}
+
+.reply-container .Profile-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.reply-container .Profile-info .User-info {
+    flex-grow: 1;
+    margin-top: 3px;
+}
+
+.reply-container span.Username {
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+}
+
+.reply-container .Content .comment {
+    font-size: 16px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+

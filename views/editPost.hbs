@@ -1,0 +1,44 @@
+{{> header_nav}}
+
+        <div class="UserPageFormat">
+            
+            <div class="CreatePost">
+               <div class="BigText" id="Title">
+                Edit Post
+               </div>
+               <form id="updateForm" action="/update-post" method="post">
+                
+                <input type="hidden" name="OGTitle" value="{{OGTitle}}">
+                <select id="options" name="option">
+                    <option value="option1" selected>Select a Community</option>
+                    <option value="Student Life">Student Life</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Love">Love</option>
+                </select>
+               <div class="ExtraInfoCont">
+                    <div class="OptionText">Text</div>
+               </div>
+               <textarea id="Title" name="TitleIn" placeholder="Title">{{Title}}</textarea>
+               <textarea id="Body" name="BodyIn" placeholder="Body">{{Body}}</textarea>
+               <div class="ExtraInfoCont">
+                     <a href="/viewUserProfile">
+						<div class="CancelButton">Cancel</div>
+					</a>
+                    <button type="submit "class="DoneButton" id="doneButton">
+                        Save
+                    </button>
+               </div>
+
+               </form>
+            </div>
+
+
+        </div>
+
+
+<script>
+document.getElementById('doneButton').addEventListener('click', function() {
+    // Submit the form
+    document.getElementById('updateForm').submit();
+});
+</script>

@@ -1,0 +1,26 @@
+<form name="addUser" action="addUser" method="post">
+
+    <div class="registration">
+        <h1>Register</h1>
+        <div class="input-box">
+            <input name="user" type="text" placeholder="Username" required>
+        </div>
+            
+        <div class="input-box">
+            <input name="pass" type="password" placeholder="Password" required>
+        </div>
+            
+        <div class="input-box">
+            <input name="confirmpass" type="password" placeholder="Confirm Password" required>
+        </div>
+        
+        <button type="submit" class="button">Register</button>
+    </div>
+</form>
+
+<script>
+    const errorMessage = "{{ errorMessage }}";
+    if (errorMessage) {
+      alert(errorMessage); // Simple alert for demonstration, consider using libraries for better pop-ups
+    }
+</script>

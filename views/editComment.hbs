@@ -1,0 +1,30 @@
+{{> header_nav}}
+        <div class="UserPageFormat">
+            <div class="UserPost">
+				<label for="edit-comment"><h1>Edit Comment</h1></label>
+				<hr>
+				<form id="updateForm" action="/edit-comments" method="post">
+					<input type="hidden" name="prevCom" value="{{prevCom}}">
+					<div class="edit-area">
+						<textarea id="newCom" name="newCom" rows="12" cols="150">{{newCom}}</textarea>
+					</div>
+					
+					<div class="buttons">
+						<div class="button1">
+							<button type="submit" class="save" id="save">Save</button>
+						</div>
+						<div class="button2">
+							<a href="/viewUser_Com" class="button-link">
+								<button type="button" class="cancel" id="cancel">Cancel</button>
+							</a>
+						</div>
+					</div>
+				</form>	
+            </div>
+        </div>
+
+<script>
+document.getElementById('save').addEventListener('click', function() {
+    document.getElementById('updateForm').submit();
+});
+</script>

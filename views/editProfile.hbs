@@ -1,0 +1,69 @@
+{{> header_nav}}
+
+        <div class="UserPageFormat">
+            <div class="UserPost">
+				<h1>Edit Profile</h1>
+				<hr>
+                <div class="profilepic-area" id="profilePicContainer" data-image-url="{{imageUrl}}">
+					<div class="ProfilePicture"><img src="{{imageUrl}}" id="profilePic" /></div>
+					<div class="change-profilepic">
+						<div class="profilepic-label">Profile Picture: </div>
+						<form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data">
+							<input type="file" name="profileImage" id="fileinput" accept="image/*">
+							<button type="submit" name="upload">Upload</button>
+						</form>
+					<!--	<button type="submit" name="upload">Upload</button> -->
+					</div>
+                </div>
+				
+
+				<div class="username-area">
+					<div class="username-label">Username: </div>
+					<div class="input-box">
+						<input name="name" type="text" id="Name">
+					</div>
+				</div>
+				
+			<!--	<div class="bio-area">
+					<div class="bio-label">Bio: </div>
+					<div class="input-box">
+						<input name="bio" type="text">
+					</div>
+				</div> -->
+				
+				<div class="buttons">
+					<div class="button1">
+						<form id="updateForm" action="/update-user" method="post" class="button-link">
+							<input type="hidden" name="profImage" id="hiddenProfileImage">
+                    		<input type="hidden" name="Uname" id="hiddenName">
+    						<button type="submit" id="saveButton" class="save">Save</button>
+						</form>
+					</div>
+					<div class="button2">
+						<a href="/viewUserProfile" class="button-link">
+							<button type="submit" class="cancel">Cancel</button>
+						</a>
+					</div>
+				</div>
+            </div>
+        </div>
+
+<script>
+document.getElementById('saveButton').addEventListener('click', function() {
+    // Update hidden fields with values from visible fields
+    updateFormFields();
+    
+    // Submit the form
+    document.getElementById('updateForm').submit();
+});
+
+function updateFormFields() {
+    var profilePicContainer = document.getElementById('profilePicContainer');
+    var profileImage = profilePicContainer.getAttribute('data-image-url');
+    var name = document.getElementById('Name').value
+
+    // Set values to hidden fields in the form
+    document.getElementById('hiddenProfileImage').value = profileImage;
+    document.getElementById('hiddenName').value = name;
+}
+</script>

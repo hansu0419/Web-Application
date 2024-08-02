@@ -1,0 +1,235 @@
+{{> header_nav}}
+<div class="Post">
+
+    <div class="Header">
+        <form action="/main" method="GET">
+            <input type="image" src="/postimages/left-arrow.png" alt="Submit">
+        </form>
+        <form action="../viewUserProfilePage/view-user-profile-page.html" method="GET">
+            <input type="image" src="/postimages/user.png" alt="Submit">
+        </form>
+        <div class="Profile-info">
+            <div class="User-info">
+                <span class="Username">{{post.username}}</span>
+                <div class="Space"></div> 
+                <span class="Username"> <span style="color:#ecfeefa4;">{{_id}}</span></span></span>
+            </div>
+        </div>
+
+        </div>
+
+ 
+
+    <div class="Content">
+
+        <div class="Title">
+            <h1>{{post.title}}</h1>
+        </div>
+
+        <div class="Tags">
+            <button class="Tag-button">{{post.tag}}</button>
+        </div>
+
+        <div class="Description">
+            <p>{{post.description}}</p>
+        </div>
+
+        <div class="Icons">
+
+            <div class="vote-container">
+
+                <button class="vote-button upvote" data-post-id="{{post._id}}" onclick="handleVote('{{post._id}}', 'upvote')">
+                    <svg viewBox="0 0 24 18">
+                        <path d="M12 2l-6 6h4v8h4v-8h4l-6-6z"></path>
+                    </svg>
+                </button>
+                <div id="vote-count">{{post.votes}}</div>
+                <button class="vote-button downvote" data-post-id="{{post._id}}" onclick="handleVote('{{post._id}}', 'downvote')">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 22l6-6h-4v-8h-4v8h-4l6 6z"></path>
+                    </svg>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="Footer">
+
+        <div class="Add-comment-container">
+            
+            <form name="create-comment" action="/create-comment/{{post._id}}" method="post" class="comment-box">
+
+                <textarea name="comment"></textarea>
+                <input type="hidden" name="username" value="{{username}}">
+                <input type="hidden" name="postId" value="{{post._Id}}">
+                <button type="submit" class="comment-submit">Comment</button>
+
+            </form>
+
+        </div>
+
+        <div class="comment-section">
+            {{#each comments}}
+            <div class="comment-container">
+                <div class="Header">
+                    <form action="../viewUserProfilePage/view-user-profile-page.html" method="GET">
+                        <input type="image" src="/postimages/user.png" alt="Submit">
+                    </form>
+                    <div class="Profile-info">
+                        <div class="User-info">
+                            <span class="Username">{{username}}</span>
+                            <div class="Space"></div>
+                            <span class="Username"> <span style="color:#ECFEEF;">{{createdAt}}</span></span>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">
+                            <img src="/postimages/dots.png" alt="dots">
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="/reply">Reply</a>
+                        </div>
+                    </div>
+                </div> 
+                <div class="Content">
+                    <div class="comment">
+                        <p>{{text}}</p>
+                    </div>
+                </div>
+                <div class="Icons">
+                    <div class="vote-container">
+                        <button class="vote-button upvote" onclick="toggleUpvote()">
+                            <svg viewBox="0 0 24 18">
+                                <path d="M12 2l-6 6h4v8h4v-8h4l-6-6z"></path>
+                            </svg>
+                        </button>
+                        <div id="vote-count">0</div>
+                        <button class="vote-button downvote" onclick="toggleDownvote()">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22l6-6h-4v-8h-4v8h-4l6 6z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class = "vote-container">
+                        <button class="comment-button" onclick="toggleReplyForm('{{this._id}}')">
+                            <img src="/postimages/message.png" alt="Comment">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="Add-comment-container" id="reply-form-{{this._id}}" style="display: none;">
+                    <form name="create-comment" action="/reply/{{this._id}}/{{postNum}}" method="post" class="comment-box">
+                        <textarea name="comment"></textarea>
+                        <input type="hidden" name="username" value="{{username}}">
+                        <button type="submit" class="comment-submit">Reply</button>
+                    </form>
+                </div>
+
+            <div class="replies">
+                {{#each replies}}
+                <div class="reply-container">
+                    <div class="Header">
+                        <form action="../viewUserProfilePage/view-user-profile-page.html" method="GET">
+                            <input type="image" src="/postimages/user.png" alt="Submit">
+                        </form>
+                        <div class="Profile-info">
+                            <div class="User-info">
+                                <span class="Username">{{username}}</span>
+                                <div class="Space"></div>
+                                <span class="Username"> <span style="color:#ECFEEF;">{{createdAt}}</span></span>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="Content">
+                        <div class="comment">
+                            <p>{{text}}</p>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            {{/each}}
+        </div>
+
+
+
+    </div>
+
+</div>
+<script> 
+function toggleReplyForm(commentId) {
+    var replyForm = document.getElementById('reply-form-' + commentId);
+    if (replyForm.style.display === 'none' || replyForm.style.display === '') {
+        replyForm.style.display = 'block';
+    } else {
+        replyForm.style.display = 'none';
+    }
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const userVoteType = '{{userVoteType}}'; // The user's current vote type
+  const postId = '{{post._id}}'; // The current post ID
+
+  // Select the SVG elements within the upvote and downvote buttons
+  const upvoteButton = document.querySelector(`button.upvote[data-post-id="${postId}"] svg`);
+  const downvoteButton = document.querySelector(`button.downvote[data-post-id="${postId}"] svg`);
+
+  // Apply colors based on the user's vote type
+  if (userVoteType === 'upvote') {
+    upvoteButton.style.fill = '#ff4500'; // Active color for upvote
+    downvoteButton.style.fill = '#FFFFFF'; // Default color for downvote
+  } else if (userVoteType === 'downvote') {
+    downvoteButton.style.fill = '#ff4500'; // Active color for downvote
+    upvoteButton.style.fill = '#FFFFFF'; // Default color for upvote
+  } else {
+    // No vote or default state
+    upvoteButton.style.fill = '#FFFFFF'; // Default color for upvote
+    downvoteButton.style.fill = '#FFFFFF'; // Default color for downvote
+  }
+});
+
+// The vote function to be called when a vote button is clicked
+async function handleVote(postId, voteType) {
+  try {
+    const response = await fetch(`/view-post/view/${postId}/vote`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ voteType: voteType })
+    });
+    const data = await response.json();
+    if (data.success) {
+      // Update vote count display
+      document.getElementById(`vote-count`).innerText = data.voteCount;
+
+      // Select the SVG elements within the upvote and downvote buttons
+      const upvoteButton = document.querySelector(`button.upvote[data-post-id="${postId}"] svg`);
+      const downvoteButton = document.querySelector(`button.downvote[data-post-id="${postId}"] svg`);
+      
+      if (voteType === 'upvote') {
+        upvoteButton.style.fill = '#ff4500'; // Active color for upvote
+        downvoteButton.style.fill = '#FFFFFF'; // Reset to default color for downvote
+      } else if (voteType === 'downvote') {
+        downvoteButton.style.fill = '#ff4500'; // Active color for downvote
+        upvoteButton.style.fill = '#FFFFFF'; // Reset to default color for upvote
+      }
+
+      // If the vote is removed (reset state), set colors to default
+      if (data.voteCount === data.previousVoteCount) {
+        upvoteButton.style.fill = '#FFFFFF'; // Default color for upvote
+        downvoteButton.style.fill = '#FFFFFF'; // Default color for downvote
+      }
+    } else {
+      console.error('Vote failed:', data.error);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+</script>
+

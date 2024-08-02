@@ -1,0 +1,10 @@
+[{
+  "_id": {
+    "$oid": "66a9f0aaf70256f7b9d25b71"
+  },
+  "userId": "hansu0419",
+  "postId": {
+    "$oid": "668cf9a7008e9c1c03e652e2"
+  },
+  "voteType": "downvote"
+}]

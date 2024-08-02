@@ -1,0 +1,387 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --color1: #053015;
+    --color2: #26A557;
+    --color3: #ECFEEF;
+    --color4: #386C5F;
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    /* background: url('images/dlsu.jpg') no-repeat; */
+    background-size: cover;
+    background-position: center;
+
+    background:
+        /* top, transparent black, faked with gradient */ 
+        linear-gradient(
+          rgba(0, 0, 0, 0.7), 
+          rgba(0, 0, 0, 0.7)
+        ),
+        /* bottom, image */
+        url('images/dlsu.jpg');
+}
+
+nav{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    background:
+        linear-gradient(
+          rgba(0, 0, 0, 0.4), 
+          rgba(0, 0, 0, 0.4)
+        ),
+        transparent;
+    padding: 5px 5%; 
+    border-bottom-style: solid;
+    border-color: black;
+    border-width: 1px;
+    position: sticky; 
+    top: 0; 
+    z-index: 100;
+    
+}
+
+.logo{
+    width: 160px;
+    margin-right: 45px;
+
+}
+
+.menu-left{
+    display: flex;
+    align-items:end;
+}
+
+.menu-left form{
+    display: flex;
+    align-items: center;
+}
+.search{
+    
+    width: max-content; 
+    display: flex;
+    align-items: center;
+    padding: 14px; 
+    border-radius: 28px;
+    background-color: #F0FDF2;
+    width: 700px;
+    transition: box-shadow 0.25s; 
+}
+
+.search:focus-within{
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.75);
+}
+
+.search-input{
+    font-size: 16px;
+    font-family: 'Poppins';
+    color: #333333; 
+    outline: none;
+    border: none;
+    background-color: transparent;
+    flex: 1; 
+}
+
+.search-input::placeholder{
+    color:rgba(0, 0, 0, 0.5);
+}
+
+.bx-search{
+    color:rgba(0, 0, 0, 0.5);
+    padding-right: 10px; 
+}
+
+.create-post{
+    width: max-content; 
+    display: flex;
+    align-items: center;
+    padding-left: 90px;
+    background-color: transparent; 
+    cursor: pointer;
+}
+
+
+.create-post form{
+    display: flex;
+    align-items: center;
+}
+
+
+
+.Logout form{
+    display: flex;
+    align-items: center;
+}
+
+.plus{
+   color: #F0FDF2;
+}
+
+#create-post-text{
+    color: #F0FDF2; 
+    font-family: 'Poppins';
+    padding-left: 5px; 
+    text-decoration: none;
+    
+}
+
+.Profile form{
+    display: flex;
+    align-items: center;
+}
+
+.profile{
+    width: max-content; 
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    color: white;
+}
+
+
+
+.UserPageFormat{
+    display: flex;
+    background-color: transparent;
+    flex-direction: row;
+}
+
+.CreatePost {
+    
+    border: 1px solid rgba(56, 108, 95, 0.4);
+    backdrop-filter: blur(80px);
+    background:
+        linear-gradient(
+          rgba(56, 108, 95, 0.4), 
+          rgba(56, 108, 95, 0.4)
+        ),
+        transparent;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    margin-top:5%;
+    margin-left: 5%;
+    margin-bottom: 10px; 
+    padding: 10px 30px;
+    border: 2.5px solid black;
+    border-radius: 15px;
+    display: block;
+    flex-direction: column;
+    flex: 0 0 90%;
+}
+
+.BigText{
+    color:#ECFEEF;
+    font-size:30px;
+    font-weight: 700;
+}
+
+
+select {
+    background-color: red; 
+    border: none; 
+    padding: 10px 40px; 
+    border-radius: 15px; 
+    cursor: pointer; 
+    text-align: center;
+    line-height: 8px;
+    margin-right: 8%; 
+    margin-bottom: 5px;
+    margin-top: 10px;
+    color:#ECFEEF;
+    font-size:20px;
+    font-weight: 700;
+}
+
+select:hover,
+select:focus {
+    background-color: rgb(184, 3, 3);
+}
+
+
+select option {
+    background-color: red; /* Background color of options */
+    color:#ECFEEF; /* Text color of options */
+    text-align: left;
+}
+
+
+.ExtraOptionCont{display:flex; margin-left: 0px; margin-top: 10px; flex-direction: row; }
+
+.OptionText{
+    color:#ECFEEF;
+    font-size:20px;
+    font-weight: 700;
+
+    display: inline-block;
+    position: relative;
+    text-decoration: none; /* Remove default underline for links */
+    padding-bottom: 5px;
+    margin-top: 20px;
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+.OptionText::after {
+    content: "";
+    display: block;
+    width: 0;
+    border-bottom: 5px solid #26A557; /* Border properties */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease; /* Smooth transition for the border width */
+}
+
+.OptionText:hover::after,
+.OptionText:focus::after {
+    width: 100%; /* Full width of the text content */
+}
+
+textarea[id=Title] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 7px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+    color:#333333;
+    font-size:20px;
+    font-weight: 700;
+    
+  }
+
+  textarea[type=Title]::placeholder{
+    color:rgba(22, 56, 34, 0.7);
+    font-size:20px;
+    font-weight: 700;
+  }
+
+  textarea[id=Body] {
+    width: 100%;
+    padding: 10px 20px;
+    padding-bottom: 240px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+    color:#333333;
+    font-size:17px;
+    font-weight: 700;
+    height: 300px;
+    
+  }
+
+  textarea[id=Body]::placeholder{
+    color:rgba(22, 56, 34, 0.7);
+    font-size:17px;
+    font-weight: 700;
+  }
+
+
+.CancelButton{
+    display: inline-block;
+    padding: 5px 45px;
+    border-radius: 16px; /* Adjust the value to control the roundness */
+    cursor: pointer;
+    background-color: #26A557;
+    margin-right: 3%;
+    color:#ECFEEF;
+    font-size:20px;
+    font-weight: 700;
+    margin-left: 70%;
+}
+
+.CancelButton:hover,
+.CancelButton:focus {
+    background-color: rgb(15, 140, 90); 
+}
+
+.DoneButton{
+    display: inline-block;
+    padding: 5px 45px;
+    border-radius: 16px; /* Adjust the value to control the roundness */
+    cursor: pointer;
+    background-color: #386C5F;
+    color:#ECFEEF;
+    font-size:20px;
+    font-weight: 700;
+    margin-left: 10px;
+    
+}
+
+.DoneButton:hover,
+.DoneButton:focus {
+    background-color: rgb(11, 77, 50); 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.TagText{
+    color:#ECFEEF;
+    font-size:20px;
+    font-weight: 700;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: red; 
+    color: #FFFFFF; 
+    padding: 10px 95px; 
+    border-radius: 4px; 
+    margin-top: 10px;
+    left: 2.2%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    color:#ECFEEF;
+    font-size:15px;
+    font-weight: 700;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {
+    background-color: #333333;
+  }
+  
+  /* Show the dropdown menu on hover */
+  .Tag-Selector:hover .dropdown-content {
+    display: block;
+  }
+  

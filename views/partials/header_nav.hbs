@@ -1,0 +1,78 @@
+<nav> 
+    <div class="menu-left"> 
+        <form action="/main" method="GET"> <!-- link-->
+            <input type="image" src="/images/Logo.png" class="logo" alt="logo">
+        </form>
+    </div>
+   <form action="/search" method="GET"> <!-- Updated form action -->
+        <div class="search"> 
+            <input type="image" src="/images/search.png" class="search-image" alt="search">
+            <input class="search-input" type="search" placeholder="Search" name="q"> <!-- Added name attribute -->
+        </div> 
+    </form>
+    <div class="create-post"> 
+        <form action="/addPostPage" method="GET"> <!-- link to add post -->
+            <input type="image" src="/images/plus.png" class="plus" alt="plus">
+                <a href ="/addPostPage" id="create-post-text">Create</a><!-- link to add post-->
+        </form>
+    </div> 
+    
+    <div class="profile">
+        <form action="/viewUserProfile" method="GET"> <!-- link-->
+            <input type="image" src="/images/user.png" alt="user">
+        </form>
+    </div>
+    
+    <div class="Logout">
+        <form action="/logout" method="GET"> <!-- link-->
+            <input type="image" src="/images/exit.png" alt="logout">
+        </form>
+    </div>
+</nav>
+
+<script>
+    async function performSearch(query) {
+        try {
+            const response = await fetch(`/search?q=${encodeURIComponent(query)}`);
+            const data = await response.json();
+
+            // Clear previous results
+            const resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = '';
+
+            // Display posts
+            if (data.posts.length > 0) {
+                data.posts.forEach(post => {
+                    resultsContainer.innerHTML += `
+                        <div class="post">
+                            <h3>${post.title}</h3>
+                            <p>${post.description}</p>
+                            <a href="/view-post/view/${post._id}">Read more</a>
+                        </div>
+                    `;
+                });
+            } else {
+                resultsContainer.innerHTML = '<p>No results found.</p>';
+            }
+        } catch (error) {
+            console.error('Error fetching search results:', error);
+            alert('Error performing search. Please try again.');
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Handle form submission
+        document.getElementById('search-form').addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent form from submitting normally
+            const query = document.getElementById('search-input').value;
+            performSearch(query); // Perform search with the query
+        });
+
+        // Optional: Trigger search when the search button is clicked
+        document.getElementById('search-button').addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent the form from submitting
+            const query = document.getElementById('search-input').value;
+            performSearch(query); // Perform search with the query
+        });
+    });
+</script>

@@ -1,0 +1,29 @@
+<div class="login-box">
+    <form name="read-user" action="read-user" method="post"> <!-- Calls the validateLogin function on form submission -->
+        <h1>Login</h1>
+
+        <div class="input-box">
+            <input name="user" type="text" placeholder="Username" required>
+            <i class='bx bxs-user'></i>
+        </div>
+        
+        <div class="input-box">
+            <input name="pass" type="password" placeholder="Password" required>
+            <i class='bx bxs-lock-alt'></i>
+        </div>
+
+        <div class="remember">
+            <label><input type="checkbox"> Remember me</label>
+        </div>
+        <button type="submit" value="submit" class="btn">Login</button>
+
+        <div class="register-link">
+            <p>Don't have an account? <a href="/register-page">Register</a></p>
+        </div>
+
+        <div class="about-page">
+            <p><a href="/aboutpage">About</a></p>
+        </div>
+    </form>
+</div>
+

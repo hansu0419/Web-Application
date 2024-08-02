@@ -1,0 +1,109 @@
+<!-- views/partials/post.hbs -->
+<div class="posts-page">
+    <div class="Header">
+        <form action="../viewUserProfilePage/view-user-profile-page.html" method="GET">
+            <input type="image" src="postimages/user.png" alt="Submit">
+        </form>
+        <div class="Profile-info">
+            <div class="User-info">
+                <span class="Username">{{username}}</span>
+                <div class="Space"></div> 
+                <span class="Username"> <span style="color:#ecfeefa4;"><p>{{time}}</p></span></span>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">
+                <img src="postimages/dots.png" alt="dots">
+            </button>
+            <div class="dropdown-content">
+                <a href="/view-post/view/{{_id}}">View Post</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="Content">
+        <div class="Title">
+            <h1>{{title}}</h1>
+        </div>
+        <div class="Tags">
+            <button class="Tag-button">{{tag}}</button>
+        </div>
+        <div class="Description">
+            <p>{{description}}</p>
+        </div>
+        <div class="Icons">
+            <div class="vote-container">
+                <button class="vote-button upvote" data-post-id="{{_id}}" onclick="handleVote('{{_id}}', 'upvote')">
+                    <svg viewBox="0 0 24 18">
+                        <path d="M12 2l-6 6h4v8h4v-8h4l-6-6z"></path>
+                    </svg>
+                </button>
+                <div id="vote-count">{{votes}}</div>
+                <button class="vote-button downvote" data-post-id="{{_id}}" onclick="handleVote('{{_id}}', 'downvote')">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 22l6-6h-4v-8h-4v8h-4l6 6z"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="comment-button-container">
+                <button class="comment-button" onclick="toggleComment()">
+                    <img src="images/comment-button.png" alt="Comment">
+                </button>
+                <div id="vote-count">0</div>    
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    async function handleVote(postId, voteType) {
+    try {
+        const response = await fetch(`/posts/${voteType}/${postId}`, {
+            method: 'POST',
+        });
+        if (response.ok) {
+            const data = await response.json();
+            document.getElementById(`vote-count`).innerText = data.voteCount;
+            updateVoteState(postId, voteType); // Update vote state without reloading the page
+        } else {
+            console.error(`Failed to ${voteType} post:`, response.statusText);
+            alert(`Failed to ${voteType} post. Please try again.`);
+        }
+    } catch (error) {
+        console.error(`Error ${voteType}ing post:`, error);
+        alert(`Error ${voteType}ing post. Please try again.`);
+    }
+}
+
+// Function to set the vote state (colors and active classes)
+function updateVoteState(postId, voteType) {
+    // Remove the active class from all buttons for this post
+    document.querySelectorAll(`button[data-post-id="${postId}"]`).forEach(button => {
+        button.classList.remove('active');
+        const svg = button.querySelector('svg');
+        if (svg) {
+            svg.style.fill = 'white'; // Reset color
+        }
+    });
+
+    // Add the active class to the button for the given voteType
+    const activeButton = document.querySelector(`button.${voteType}[data-post-id="${postId}"]`);
+    if (activeButton) {
+        activeButton.classList.add('active');
+        const svg = activeButton.querySelector('svg');
+        if (svg) {
+            svg.style.fill = '#ff4500'; // Set active color
+        }
+    } else {
+        console.log(`No button found for post ${postId} with vote type ${voteType}`);
+    }
+}
+
+// Example usage: Call this function on page load to set the initial vote state based on server data
+function initializeVoteStates(votes) {
+    votes.forEach(vote => {
+        updateVoteState(vote.postId, vote.voteType);
+    });
+}
+</script>

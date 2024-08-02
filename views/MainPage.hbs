@@ -1,0 +1,54 @@
+{{> header_nav}}
+        <div class="Page">
+        
+        <div class="Post">
+            {{#each posts}}
+            {{> post}}
+                <hr> 
+            {{/each}}
+
+
+        </div>
+        </div>
+       
+    
+        <script>
+            
+             function handleVote(postId, voteType) {
+            fetch(`/posts/${voteType}/${postId}`, {
+                method: 'POST',
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert(`Post ${voteType}d`);
+                    window.location.reload(); // Refresh the page to reflect the change
+                } else {
+                    console.error(`Failed to ${voteType} post:`, response.statusText);
+                    alert(`Failed to ${voteType} post. Please try again.`);
+                }
+            })
+            .catch(error => {
+                console.error(`Error ${voteType}ing post:`, error);
+                alert(`Error ${voteType}ing post. Please try again.`);
+            });
+        }
+
+        function setVoteState(postId, voteType) {
+    // Remove the active class from all buttons for this post
+    document.querySelectorAll(`button[data-post-id="${postId}"]`).forEach(button => {
+        button.classList.remove('active');
+    });
+
+    // Add the active class to the button for the given voteType
+    const activeButton = document.querySelector(`button.${voteType}[data-post-id="${postId}"]`);
+    if (activeButton) {
+        activeButton.classList.add('active');
+    } else {
+        console.log(`No button found for post ${postId} with vote type ${voteType}`);
+    }
+}
+
+        
+    
+        </script>
+<!-- this can be added through-out the file -->

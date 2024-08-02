@@ -1,0 +1,384 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --color1: #053015;
+    --color2: #26A557;
+    --color3: #ECFEEF;
+    --color4: #386C5F;
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    /* background: url('images/dlsu.jpg') no-repeat; */
+    background-size: cover;
+    background-position: center;
+
+    background:
+        /* top, transparent black, faked with gradient */ 
+        linear-gradient(
+          rgba(0, 0, 0, 0.7), 
+          rgba(0, 0, 0, 0.7)
+        ),
+        /* bottom, image */
+        url('images/dlsu.jpg');
+}
+
+nav{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    background:
+        linear-gradient(
+          rgba(0, 0, 0, 0.4), 
+          rgba(0, 0, 0, 0.4)
+        ),
+        transparent;
+    padding: 5px 5%; 
+    border-bottom-style: solid;
+    border-color: black;
+    border-width: 1px;
+    position: sticky; 
+    top: 0; 
+    z-index: 100;
+    
+}
+
+.logo{
+    width: 160px;
+    margin-right: 45px;
+
+}
+
+.menu-left{
+    display: flex;
+    align-items:end;
+}
+.search{
+    
+    width: max-content; 
+    display: flex;
+    align-items: center;
+    padding: 14px; 
+    border-radius: 28px;
+    background-color: #F0FDF2;
+    width: 700px;
+    transition: box-shadow 0.25s; 
+}
+
+.search:focus-within{
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.75);
+}
+
+.search-input{
+    font-size: 16px;
+    font-family: 'Poppins';
+    color: #333333; 
+    outline: none;
+    border: none;
+    background-color: transparent;
+    flex: 1; 
+}
+
+.search-input::placeholder{
+    color:rgba(0, 0, 0, 0.5);
+}
+
+.bx-search{
+    color:rgba(0, 0, 0, 0.5);
+    padding-right: 10px; 
+}
+
+
+.menu-left form{
+    display: flex;
+    align-items: center;
+}
+
+.Create-Post{
+    width: max-content; 
+    display: flex;
+    align-items: center;
+    padding-left: 90px;
+    background-color: transparent; 
+    cursor: pointer;
+}
+
+.Profile form{
+    display: flex;
+    align-items: center;
+}
+
+.Create-Post form{
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+
+.Logout form{
+    display: flex;
+    align-items: center;
+}
+
+.plus{
+    color: #F0FDF2;
+   
+   
+}
+
+#create-post-text{
+    color: #F0FDF2; 
+    font-family: 'Poppins';
+    padding-left: 5px; 
+    text-decoration: none;
+
+    
+}
+
+.Profile{
+    width: max-content; 
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    color: white;
+}
+
+
+.UserPageFormat{
+    display: flex;
+    background-color: transparent;
+    flex-direction: row;
+}
+
+.UserPost {
+    
+    border: 1px solid rgba(56, 108, 95, 0.4);
+    backdrop-filter: blur(80px);
+    background:
+        linear-gradient(
+          rgba(56, 108, 95, 0.4), 
+          rgba(56, 108, 95, 0.4)
+        ),
+        transparent;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    margin-top:5%;
+    margin-left: 5%;
+    margin-bottom: 10px; 
+    padding: 10px 30px;
+    border: 2.5px solid black;
+    border-radius: 15px;
+    display: block;
+    flex-direction: row;
+    flex: 0 0 60%;
+}
+
+.UserProfile {
+    border: 1px solid rgba(56, 108, 95, 0.4);
+    backdrop-filter: blur(80px);
+    background:
+        linear-gradient(
+          rgba(56, 108, 95, 0.4), 
+          rgba(56, 108, 95, 0.4)
+        ),
+        transparent;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    margin-top:5%;
+    margin-left: 5%;
+    margin-right: 20%;
+    margin-bottom: 10px; 
+    padding: 10px 30px;
+    border: 2.5px solid black;
+    border-radius: 15px;
+    display: block;
+    flex: 0 0 25%;
+}
+
+
+.ProfilePicture{display:flex; justify-content: center; vertical-align: top; }
+            .ProfilePicture > img{
+                border-radius: 50%;
+                height: 200px;
+                width: 200px;
+                margin-top: 10px;
+                border-style: solid;
+                border-color: #386C5F;
+                border-width: 10px;
+
+            }
+
+.UserNameCont{display:flex; margin-left: 0px; margin-top: 20px; }
+.UserName{
+    color:#ECFEEF;
+    font-size:30px;
+    font-weight: 700;
+}
+
+.UserButtonsCont{display:flex; margin-left: 0px; margin-top: 10px; flex-direction: row;}
+
+.EditButton{
+    display: inline-block;
+    padding: 5px 45px;
+    border-radius: 16px; /* Adjust the value to control the roundness */
+    cursor: pointer;
+    background-color: #26A557;
+    margin-right: 3%;
+    color:#ECFEEF;
+    font-size:20px;
+    font-weight: 700;
+}
+
+.EditButton:hover,
+.EditButton:focus {
+    background-color: rgb(15, 140, 90); 
+}
+
+.MessageButton{
+    display: inline-block;
+    padding: 5px 45px;
+    border-radius: 16px; /* Adjust the value to control the roundness */
+    cursor: pointer;
+    background-color: #386C5F;
+}
+
+.MessageButton:hover,
+.MessageButton:focus {
+    background-color: rgb(11, 77, 50); 
+}
+
+.CommentButtons{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 9px;
+}
+
+.EditComPostButton, .DelComPostButton{
+    display: inline-block;
+    padding: 5px 45px;
+    border-radius: 16px; /* Adjust the value to control the roundness */
+    cursor: pointer;
+    background-color: #386C5F;
+    margin-right: 79%;
+    color:#ECFEEF;
+    font-size:12px;
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+.EditComPostButton:hover,
+.EditComPostButton:focus,
+.DelComPostButton:hover,
+.DelComPostButton:focus {
+    background-color: rgb(11, 77, 50); 
+}
+
+.ProfileText{
+    color:#ECFEEF;
+    font-size:20px;
+    font-weight: 700;
+}
+
+.SmallerProfileText{
+    color:#ECFEEF;
+    font-size:15px;
+    font-weight: 700;
+}
+
+
+
+.ExtraInfoCont{display:flex; margin-left: 0px; margin-top: 10px; flex-direction: row; }
+
+.PostNo{display:flex; margin-right: 5px; margin-top: 10px; flex-direction: column; }
+
+.CommentNoPostNo{display:flex; margin-right: 0px; margin-top: 10px; flex-direction: column; }
+
+.CreationDate{display:flex; margin-right: 0px; margin-top: 10px; flex-direction: column; }
+
+.PostCont{display:flex; margin-right: 0px; margin-top: 10px; flex-direction: column; border-top: 1.5px  solid rgba(255, 255, 255, 0.5); border-bottom: 1.5px solid rgba(255, 255, 255, 0.5); cursor: pointer;}
+
+.PostCont:hover,
+.PostCont:focus {
+    background-color: rgb(21, 55, 49); 
+}
+
+.TagText{
+    color:#ECFEEF;
+    font-size:12px;
+    font-weight: 700;
+}
+
+.PostTitle{
+    font-size: 18px;
+    color: white;
+    margin-top: 11px;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.PostDate{
+    font-size: 12px;
+    color: white;
+    text-align: justify;
+}
+
+
+.Tag-button {
+    background-color: red; 
+    color: #FFFFFF; 
+    border: none; 
+    padding: 8px 1px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    text-align: center;
+    line-height: 8px;
+    margin-right: 80%; 
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.Tag-button:hover,
+.Tag-button:focus {
+    background-color: rgb(184, 3, 3); 
+}
+
+
+.ProfileViewTab{display:flex; margin-right: 0px; margin-top: 10px; flex-direction: row; ; }
+
+.PostsButton{
+    display: inline-block;
+    padding: 5px 45px;
+    border-radius: 16px; /* Adjust the value to control the roundness */
+    cursor: pointer;
+    background-color: #26A557;
+    margin-right: 3%;
+}
+
+.PostsButton:hover,
+.PostsButton:focus {
+    background-color: rgb(15, 140, 90); 
+}
+
+.CommentButton{
+    display: inline-block;
+    padding: 5px 45px;
+    border-radius: 16px; /* Adjust the value to control the roundness */
+    cursor: pointer;
+    background-color: #386C5F;
+}
+
+.CommentButton:hover,
+.CommentButton:focus {
+    background-color: rgb(11, 77, 50); 
+}
+
+.ProfileView{
+    color:#ECFEEF;
+    font-size:20px;
+    font-weight: 700;
+}

@@ -1,0 +1,28 @@
+{{> header_nav}}
+           <div class="UserPageFormat">
+    <div class="CreatePost">
+        <div class="BigText">
+            Create Post
+        </div>
+        <form action="/addPost" method="POST">
+            <select id="options" name="community">
+                <option value="option1" selected>Select a Community</option>
+                <option value="Student Life">Student Life</option>
+                <option value="Technology">Technology</option>
+                <option value="Love">Love</option>
+            </select>
+            <div class="ExtraInfoCont">
+                <div class="OptionText">Text</div>
+                <div class="OptionText">Images & Video</div>
+                <div class="OptionText">Link</div>
+                <div class="OptionText">Poll</div>
+            </div>
+            <textarea id="Title" name="title" placeholder="Title"></textarea>
+            <textarea id="Body" name="body" placeholder="Body"></textarea>
+            <div class="ExtraInfoCont">
+                <div class="DraftButton">Save Draft</div>
+                <div class="PostButton"><button type="submit">Post</button></div>
+            </div>
+        </form>
+    </div>
+</div>

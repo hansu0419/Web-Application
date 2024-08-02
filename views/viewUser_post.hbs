@@ -1,0 +1,151 @@
+{{> header_nav}}
+
+        <div class="UserPageFormat">
+            <div class="UserPost">
+                <div class="ProfileViewTab">
+                    
+                    <a href="/viewUserProfile?currentUser={{user.username}}" class="PostsButton">
+                        <div class="ProfileView">Posts</div>
+                    </a>
+
+                    <a href="/viewUser_Com" class="CommentButton">
+                        <div class="ProfileView">Comments</div>
+                    </a>
+                </div>
+                
+                {{#each post}}
+                <div class="posts-page">
+                    <div class="Header">
+                        <div class="dropdown">
+                            <button class="dropbtn">
+                                <img src="postimages/dots.png" alt="dots">
+                            </button>
+                            <div class="dropdown-content">
+                                <a href="edit_posts?title={{title}}">Edit</a>
+                                <a href="#" onclick ="return confirmAndDelete('{{_id}}', '{{user.username}}', '{{user.username}}');">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="Content">
+        
+                        <div class="Title">
+                            <h1>{{title}}</h1>
+                        </div>
+        
+                        <div class="Tags">
+                            <button class="Tag-button">{{tag}}</button>
+                        </div>
+        
+                        <div class="Description">
+                            <p>{{description}}
+                            </p>
+                        </div>
+        
+                        <div class="Icons">
+        
+                            <div class="vote-container">
+        
+                                <button class="vote-button upvote" id="upvote1" onclick="toggleUpvote(this, 'downvote1')">
+                                    <svg viewBox="0 0 24 18">
+                                        <path d="M12 2l-6 6h4v8h4v-8h4l-6-6z"></path>
+                                    </svg>
+                                </button>
+                                <div id="vote-count">0</div>
+                                <button class="vote-button downvote" id="downvote1" onclick="toggleUpvote(this, 'upvote1')">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 22l6-6h-4v-8h-4v8h-4l6 6z"></path>
+                                    </svg>
+                                </button>
+        
+                            </div>
+    
+                            <div class="comment-button-container">
+                                <button class="comment-button" onclick="toggleComment()">
+                                    <img src="images/comment-button.png" alt="Comment">
+                                </button>
+                                <div id="vote-count">0</div>    
+                            </div>
+                            
+        
+                        </div>
+        
+                    </div>           
+                </div>
+                {{/each}}
+            </div>
+            
+
+            <div class="UserProfile">
+
+                <div class="ProfilePicture">
+                    <img src={{user.image}}> 
+                </div>
+
+                <div class="UserNameCont">
+                    <div class="UserName">
+                        {{user.username}}
+                    </div>
+                </div>
+
+                <div class="UserButtonsCont">
+                    <a href="edit_profile">
+                        <button class="EditButton">Edit</button>
+                    </a>
+                    <form action="/delete_profile" method="POST" onsubmit="return confirm('Are you sure you want to delete this profile?');">
+                        <input type="hidden" name="User1" value="{{user.username}}">
+                        <button type="submit" class="EditButton">Delete</button>
+                    </form>
+                </div>
+
+                <div class="ExtraInfoCont">
+                    <div class="PostNo">
+                        <div class="ProfileText">1</div>
+                        <div class="SmallerProfileText">No. of Posts</div>
+                    </div>
+                    <div class="CommentNoPostNo">
+                        <div class="ProfileText">5</div>
+                        <div class="SmallerProfileText">No. of Comments</div>
+                    </div>
+                    <div class="CreationDate">
+                        <div class="ProfileText">{{user.creation_date}}</div>
+                        <div class="SmallerProfileText">Creation Date</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+<script>
+function confirmAndDelete(postId) {
+    if (confirm('Are you sure you want to delete this post?')) {
+        fetch(`/viewUserProfile/delete/${postId}`, {
+            method: 'GET',
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Post marked as deleted');
+                window.location.reload(); // Refresh the page to reflect the change
+            } else {
+                console.error('Failed to mark post as deleted:', response.statusText);
+                alert('Failed to mark post as deleted. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error marking post as deleted:', error);
+            alert('Error marking post as deleted. Please try again.');
+        });
+    } else {
+        return false; // Cancel action
+    }
+}
+
+
+</script>
+
+<script>
+function myFunction() {
+	alert("This feature is still in progress!");
+}
+</script>

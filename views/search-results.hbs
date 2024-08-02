@@ -1,0 +1,15 @@
+{{> header_nav}}
+    <div class="search-results-page">
+        <h1>Search Results for "{{query}}"</h1>
+        {{#if posts.length}}
+            {{#each posts}}
+                <div class="Post">
+                    <h3><a href="/view-post/view/{{_id}}">{{title}}</a></h3>
+                    <p>{{description}}</p>
+                </div>
+                <hr> 
+            {{/each}}
+        {{else}}
+            <p>No results found.</p>
+        {{/if}}
+    </div>

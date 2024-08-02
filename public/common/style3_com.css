@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --color1: #053015;
+    --color2: #26A557;
+    --color3: #ECFEEF;
+    --color4: #386C5F;
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    /* background: url('images/dlsu.jpg') no-repeat; */
+    background-size: cover;
+    background-position: center;
+
+    background:
+        /* top, transparent black, faked with gradient */ 
+        linear-gradient(
+          rgba(0, 0, 0, 0.7), 
+          rgba(0, 0, 0, 0.7)
+        ),
+        /* bottom, image */
+        url('images/dlsu.jpg');
+}
+
+nav{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    background:
+        linear-gradient(
+          rgba(0, 0, 0, 0.4), 
+          rgba(0, 0, 0, 0.4)
+        ),
+        transparent;
+    padding: 5px 5%; 
+    border-bottom-style: solid;
+    border-color: black;
+    border-width: 1px;
+    position: sticky; 
+    top: 0; 
+    z-index: 100;
+    
+}
+
+/* Popup container */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+  
+/* The actual popup (appears on top) */
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+  
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+  
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+}
+  
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+  
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+
+.logo{
+    width: 160px;
+    margin-right: 45px;
+}
+
+.menu-left{
+    display: flex;
+    align-items:end;
+}
+
+.menu-left form{
+    display: flex;
+    align-items: center;
+}
+
+.search{
+    width: max-content; 
+    display: flex;
+    align-items: center;
+    padding: 14px; 
+    border-radius: 28px;
+    background-color: #F0FDF2;
+    width: 700px;
+    transition: box-shadow 0.25s; 
+}
+
+.search:focus-within{
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.75);
+}
+
+.search-input{
+    font-size: 16px;
+    font-family: 'Poppins';
+    color: #333333; 
+    outline: none;
+    border: none;
+    background-color: transparent;
+    flex: 1; 
+}
+
+.search-input::placeholder{
+    color:rgba(0, 0, 0, 0.5);
+}
+
+.bx-search{
+    color:rgba(0, 0, 0, 0.5);
+    padding-right: 10px; 
+}
+
+.create-post{
+    width: max-content; 
+    display: flex;
+    align-items: center;
+    padding-left: 90px;
+    background-color: transparent; 
+    cursor: pointer;
+}
+
+.create-post form{
+    display: flex;
+    align-items: center;
+}
+
+
+.Logout form{
+    display: flex;
+    align-items: center;
+}
+
+.plus{
+   color: #F0FDF2;
+}
+
+#create-post-text{
+    color: #F0FDF2; 
+    font-family: 'Poppins';
+    padding-left: 5px; 
+    text-decoration: none;
+    
+}
+
+.profile form{
+    display: flex;
+    align-items: center;
+}
+
+.profile{
+    width: max-content; 
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    color: white;
+}
+
+button {
+    width: 20%;
+    height: 40px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+	margin-right: 10px;
+}
+
+.UserPageFormat{
+    display: flex;
+    background-color: transparent;
+    flex-direction: column;
+	color: white;
+	margin-bottom: 70px;
+}
+
+.UserPost {
+    border: 1px solid rgba(56, 108, 95, 0.4);
+    backdrop-filter: blur(80px);
+    background:
+        linear-gradient(
+          rgba(56, 108, 95, 0.4), 
+          rgba(56, 108, 95, 0.4)
+        ),
+        transparent;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    margin-top:5%;
+    margin-left: 15%;
+	margin-right: 15%;
+    margin-bottom: 10px; 
+    padding: 10px 30px;
+    border: 2.5px solid black;
+    border-radius: 15px;
+}
+
+h1 {
+	text-align: left;
+	margin-bottom: 10px;
+	margin-top: 20px;
+}
+
+hr {
+	margin-bottom: 20px;
+}	
+
+.edit-area {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.newCom {
+    margin-top: 20px;
+}
+
+form {
+	margin-top: 2%;
+}	
+
+.buttons{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-bottom: 30px;
+	margin-left: 45%;
+}
+
+.button1 {
+    margin-top: 20px;
+	margin-bottom: 20px;
+}	
