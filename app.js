@@ -128,7 +128,7 @@ server.get('/aboutpage', (req, resp) => {
 });
 
 //This is the login function. It uses the logindb database and compares it to the input.
-server.post('/read-user', async function(req, resp) {
+server.post('/read-user', isAuthenticated, async function(req, resp) {
   const dbo = mongoClient.db(databaseName);
   const loginCollection = dbo.collection(collectionName);
   const commentsCollection = dbo.collection(commentsCollectionName);
