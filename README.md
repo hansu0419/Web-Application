@@ -17,3 +17,5 @@ Sample Data
         - posts
         - comments
         - profiles
+
+You may also just click this link: https://dlsuforumwebapp.onrender.com
