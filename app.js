@@ -268,7 +268,7 @@ server.post('/addUser', async (req, res) => {
 });
 
 
-server.get('/main', async (req, res) => {
+server.get('/main', isAuthenticated, async (req, res) => {
   try {
       const dbo = mongoClient.db(databaseName);
       const col = dbo.collection(postsCollectionName);
